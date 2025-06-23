@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Where Legends Hang Out</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landingpage.css">
+</head>
+<body data-theme="dark">
+    <div class="bg-animation"></div>
+    
+    <header>
+        <nav>
+            <div class="logo">GAMEHUB</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#games">Games</a></li>
+                <li><a href="#streamers">Streamers</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+            </ul>
+            <div style="display: flex; align-items: center;">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="join-btn">Join Now</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>WHERE LEGENDS HANG OUT</h1>
+            <p>Game. Chat. Dominate. Join the ultimate gaming community where elite players connect, strategize, and conquer together.</p>
+            <div class="hero-cta">
+                <a href="#" class="cta-primary">Join the Community</a>
+                <a href="#" class="cta-secondary">Watch Trailer</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="section-title">
+            <h2>Power-Packed Features</h2>
+            <p>Everything you need to dominate the gaming world</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎮</div>
+                <h3>Game-Specific Rooms</h3>
+                <p>Dedicated channels for FPS, RPG, MOBA, Battle Royale, and more. Find your tribe and level up together.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🧠</div>
+                <h3>Strategy Hub</h3>
+                <p>Share tactics, analyze gameplay, and learn from pro players. Turn your game knowledge into victories.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">📹</div>
+                <h3>Live Streams</h3>
+                <p>Watch and host live gaming sessions. Share epic moments and learn from the best in real-time.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🎤</div>
+                <h3>Voice & Text Chat</h3>
+                <p>Crystal-clear voice channels and lightning-fast text chat. Coordinate with your squad seamlessly.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">🏆</div>
+                <h3>Tournaments</h3>
+                <p>Compete in community tournaments and climb the leaderboards. Prove you're the ultimate champion.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">👥</div>
+                <h3>Squad Builder</h3>
+                <p>Find teammates with matching skills and playstyles. Build the perfect team for any game mode.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="live-stats">
+        <div class="stats-content">
+            <h2>Live Stats</h2>
+            <p>Join the action with over <span class="counter" data-target="120000">0</span> gamers online and <span class="counter" data-target="1350">0</span> rooms active now!</p>
+        </div>
+    </section>
+
+    <section class="featured-games" id="games">
+        <div class="section-title">
+            <h2>Featured Games</h2>
+            <p>Discover the hottest games in our community</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track" id="gamesCarousel">
+                <div class="carousel-card game-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cyber Legends">
+                    <h3>Cyber Legends</h3>
+                    <p>Fast-paced FPS action with cyberpunk aesthetics</p>
+                </div>
+                <div class="carousel-card game-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1556438064-2d7646166914?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Mystic Realms">
+                    <h3>Mystic Realms</h3>
+                    <p>Epic fantasy MMORPG with stunning visuals</p>
+                </div>
+                <div class="carousel-card game-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Battle Royale X">
+                    <h3>Battle Royale X</h3>
+                    <p>Ultimate survival experience in dynamic environments</p>
+                </div>
+                <div class="carousel-card game-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Racing Thunder">
+                    <h3>Racing Thunder</h3>
+                    <p>High-octane racing with customizable vehicles</p>
+                </div>
+                <div class="carousel-card game-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Space Conquest">
+                    <h3>Space Conquest</h3>
+                    <p>Strategic space warfare and exploration</p>
+                </div>
+            </div>
+            <div class="carousel-nav prev" onclick="slideCarousel('gamesCarousel', -1)">‹</div>
+            <div class="carousel-nav next" onclick="slideCarousel('gamesCarousel', 1)">›</div>
+        </div>
+    </section>
+
+    <section class="featured-streamers" id="streamers">
+        <div class="section-title">
+            <h2>Featured Streamers</h2>
+            <p>Watch the best players in action</p>
+        </div>
+        <div class="carousel-container">
+            <div class="carousel-track" id="streamersCarousel">
+                <div class="carousel-card streamer-card fade-in">
+                    <div class="live-indicator">🔴 LIVE</div>
+                    <img src="https://images.unsplash.com/photo-1555685812-1b1c1c1c1c1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Streamer 1">
+                    <h3>Streamer 1</h3>
+                    <p>Epic gameplay and strategies!</p>
+                </div>
+                <div class="carousel-card streamer-card fade-in">
+                    <div class="live-indicator">🔴 LIVE</div>
+                    <img src="https://images.unsplash.com/photo-1555685812-1b1c1c1c1c1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Streamer 2">
+                    <h3>Streamer 2</h3>
+                    <p>Join the fun and excitement!</p>
+                </div>
+                <div class="carousel-card streamer-card fade-in">
+                    <div class="live-indicator">🔴 LIVE</div>
+                    <img src="https://images.unsplash.com/photo-1555685812-1b1c1c1c1c1c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Streamer 3">
+                    <h3>Streamer 3</h3>
+                    <p>Watch the best plays live!</p>
+                </div>
+            </div>
+            <div class="carousel-nav prev" onclick="slideCarousel('streamersCarousel', -1)">‹</div>
+            <div class="carousel-nav next" onclick="slideCarousel('streamersCarousel', 1)">›</div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="section-title">
+            <h2>Community Testimonials</h2>
+            <p>What our members say</p>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-avatar">👤</div>
+                <p class="testimonial-text">"Best guild I’ve ever joined 💀🔥"</p>
+                <p class="testimonial-author">- Gamer123</p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-avatar">👤</div>
+                <p class="testimonial-text">"Amazing community and support!"</p>
+                <p class="testimonial-author">- Player456</p>
+            </div>
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-avatar">👤</div>
+                <p class="testimonial-text">"I love the tournaments and events!"</p>
+                <p class="testimonial-author">- ProGamer789</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-cta">
+        <div class="cta-content">
+            <h2>Become a Member</h2>
+            <p>Join our community and start your gaming journey today!</p>
+            <a href="#" class="cta-primary">Sign Up Now</a>
+            <a href="#" class="cta-secondary">Join Discord</a>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+    <div class="section-title">
+        <h2>Get In Touch</h2>
+        <p>Have questions or feedback? We'd love to hear from you!</p>
+    </div>
+    
+    <div class="contact-container">
+        <div class="contact-info">
+            <div class="info-card">
+                <div class="info-icon">📧</div>
+                <h3>Email Us</h3>
+                <p>support@gamehub.com</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">💬</div>
+                <h3>Join Our Discord</h3>
+                <p>discord.gg/gamehub</p>
+            </div>
+            <div class="info-card">
+                <div class="info-icon">📍</div>
+                <h3>Based In</h3>
+                <p>India</p>
+            </div>
+        </div>
+        
+        <form class="contact-form" id="contactForm">
+            <div class="form-group">
+                <input type="text" id="name" name="name" required>
+                <label for="name">Your Name</label>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="form-group">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email Address</label>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="form-group">
+                <select id="subject" name="subject" required>
+                    <option value="" disabled selected></option>
+                    <option value="support">Technical Support</option>
+                    <option value="partnership">Partnership Inquiry</option>
+                    <option value="feedback">Feedback/Suggestions</option>
+                    <option value="other">Other</option>
+                </select>
+                <label for="subject">Subject</label>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="form-group">
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <label for="message">Your Message</label>
+                <div class="underline"></div>
+            </div>
+            
+            <div class="form-footer">
+                <button type="submit" class="submit-btn">
+                    <span>Send Message</span>
+                    <svg viewBox="0 0 24 24" width="24" height="24">
+                        <path fill="currentColor" d="M2,21L23,12L2,3V10L17,12L2,14V21Z" />
+                    </svg>
+                </button>
+                <div class="form-message" id="formMessage"></div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="contact-radial"></div>
+</section>
+
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Links</h4>
+                <a href="#">Terms of Service</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">T</a>
+                    <a href="#" class="social-icon">D</a>
+                    <a href="#" class="social-icon">S</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2023 GameHub. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="landingpage.js"></script>
+</body>
+</html>

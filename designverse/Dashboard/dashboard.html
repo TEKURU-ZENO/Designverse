@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameHub - Gaming Community Hub</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="top-bar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="logo">🎮</span>
+                <h1>GameHub</h1>
+                <span class="tagline">Gaming Community Hub</span>
+            </div>
+            <div class="nav-menu">
+                <button class="nav-item active" data-section="dashboard">
+                    <span class="nav-icon">📊</span>
+                    Dashboard
+                </button>
+                <button class="nav-item" data-section="tournaments">
+                    <span class="nav-icon">🏆</span>
+                    Tournaments
+                </button>
+                <button class="nav-item" data-section="community">
+                    <span class="nav-icon">👥</span>
+                    Community
+                </button>
+                <button class="nav-item" data-section="achievements">
+                    <span class="nav-icon">🏅</span>
+                    Achievements
+                </button>
+            </div>
+            <div class="nav-controls">
+                <button class="notification-btn" onclick="toggleNotifications()">
+                    <span class="notification-icon">🔔</span>
+                    <span class="notification-badge">3</span>
+                </button>
+                <button class="theme-toggle" onclick="toggleTheme()">🌓</button>
+                <div class="profile-menu" onclick="toggleProfileMenu()">
+                    <div class="profile-avatar neon-glow">GX</div>
+                    <span class="profile-name">GameMaster</span>
+                    <span class="dropdown-arrow">▼</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Dashboard Container -->
+    <main class="dashboard-container">
+        <!-- Left Sidebar -->
+        <aside class="sidebar-left">
+            <!-- Player Profile Card -->
+            <div class="card profile-card floating">
+                <div class="card-header">
+                    <h3 class="card-title">Player Profile</h3>
+                    <button class="card-action" onclick="editProfile()">✏️</button>
+                </div>
+                <div class="card-content">
+                    <div class="profile-section">
+                        <div class="avatar-container">
+                            <div class="avatar neon-glow pulsing">GX</div>
+                            <div class="status-indicator online"></div>
+                            <div class="rank-badge">Diamond</div>
+                        </div>
+                        <h3 class="player-name">GameMaster Pro</h3>
+                        <div class="level-badge glow-effect">Level 47</div>
+                        
+                        <!-- XP Progress Bar with Neon Glow -->
+                        <div class="xp-section">
+                            <div class="xp-label">
+                                <span>Experience</span>
+                                <span class="xp-numbers">2,340 / 3,500 XP</span>
+                            </div>
+                            <div class="xp-bar-container">
+                                <div class="xp-bar">
+                                    <div class="xp-fill neon-glow-bar" style="width: 68%"></div>
+                                    <div class="xp-particles"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Stats Grid -->
+                        <div class="stats-grid">
+                            <div class="stat-item" onclick="showStatDetail('wins')">
+                                <div class="stat-icon">🏆</div>
+                                <div class="stat-value counter" data-target="156">0</div>
+                                <div class="stat-label">Wins</div>
+                            </div>
+                            <div class="stat-item" onclick="showStatDetail('winrate')">
+                                <div class="stat-icon">📈</div>
+                                <div class="stat-value counter" data-target="89">0</div>
+                                <div class="stat-label">Win Rate %</div>
+                            </div>
+                            <div class="stat-item" onclick="showStatDetail('achievements')">
+                                <div class="stat-icon">🏅</div>
+                                <div class="stat-value counter" data-target="24">0</div>
+                                <div class="stat-label">Badges</div>
+                            </div>
+                            <div class="stat-item" onclick="showStatDetail('hours')">
+                                <div class="stat-icon">⏱️</div>
+                                <div class="stat-value counter" data-target="2847">0</div>
+                                <div class="stat-label">Hours</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Friends List - Collapsible -->
+            <div class="card friends-card">
+                <div class="card-header" onclick="toggleFriends()">
+                    <h3 class="card-title">
+                        <span class="friends-icon">👥</span>
+                        Friends Online
+                        <span class="friends-count">(8)</span>
+                    </h3>
+                    <button class="collapse-btn" id="friends-toggle">▼</button>
+                </div>
+                <div class="friends-list" id="friends-container">
+                    <div class="friend-item" onclick="inviteFriend('ShadowKnight')">
+                        <div class="friend-avatar">SK</div>
+                        <div class="friend-info">
+                            <div class="friend-name">ShadowKnight</div>
+                            <div class="friend-status online">Playing Valorant</div>
+                        </div>
+                        <div class="friend-actions">
+                            <button class="action-btn invite">Invite</button>
+                        </div>
+                    </div>
+                    <div class="friend-item" onclick="inviteFriend('NovaX')">
+                        <div class="friend-avatar">NX</div>
+                        <div class="friend-info">
+                            <div class="friend-name">NovaX</div>
+                            <div class="friend-status tournament">In Tournament</div>
+                        </div>
+                        <div class="friend-actions">
+                            <button class="action-btn spectate">Watch</button>
+                        </div>
+                    </div>
+                    <div class="friend-item" onclick="inviteFriend('CyberZ')">
+                        <div class="friend-avatar">CZ</div>
+                        <div class="friend-info">
+                            <div class="friend-name">CyberZ</div>
+                            <div class="friend-status away">Away - 5m</div>
+                        </div>
+                        <div class="friend-actions">
+                            <button class="action-btn message">Chat</button>
+                        </div>
+                    </div>
+                    <div class="friend-item" onclick="inviteFriend('ProGamer')">
+                        <div class="friend-avatar">PG</div>
+                        <div class="friend-info">
+                            <div class="friend-name">ProGamer</div>
+                            <div class="friend-status online">Available</div>
+                        </div>
+                        <div class="friend-actions">
+                            <button class="action-btn invite">Invite</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <section class="main-content">
+            <!-- Live Statistics Dashboard -->
+            <div class="card main-stats-card">
+                <div class="card-header">
+                    <h3 class="card-title">Live Gaming Analytics</h3>
+                    <div class="time-filters">
+                        <button class="filter-btn active" data-period="today">Today</button>
+                        <button class="filter-btn" data-period="week">Week</button>
+                        <button class="filter-btn" data-period="month">Month</button>
+                    </div>
+                </div>
+                <div class="card-content">
+                    <div class="chart-container">
+                        <canvas id="mainPerformanceChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Performance Grid -->
+            <div class="performance-grid">
+                <div class="card performance-card">
+                    <div class="card-header">
+                        <h4 class="card-title">Valorant Stats</h4>
+                        <div class="game-icon">🎯</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="performance-chart">
+                            <canvas id="valorantChart"></canvas>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-stat">
+                                <span class="stat-label">Rank</span>
+                                <span class="stat-value rank-diamond">Diamond 2</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">RR</span>
+                                <span class="stat-value">1,847</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">KD</span>
+                                <span class="stat-value">1.8</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card performance-card">
+                    <div class="card-header">
+                        <h4 class="card-title">CS2 Performance</h4>
+                        <div class="game-icon">🔫</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="performance-chart">
+                            <canvas id="cs2Chart"></canvas>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-stat">
+                                <span class="stat-label">Rank</span>
+                                <span class="stat-value rank-global">Global Elite</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">ELO</span>
+                                <span class="stat-value">2,156</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">ADR</span>
+                                <span class="stat-value">89.4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card performance-card">
+                    <div class="card-header">
+                        <h4 class="card-title">League of Legends</h4>
+                        <div class="game-icon">⚔️</div>
+                    </div>
+                    <div class="card-content">
+                        <div class="performance-chart">
+                            <canvas id="lolChart"></canvas>
+                        </div>
+                        <div class="game-stats">
+                            <div class="game-stat">
+                                <span class="stat-label">Rank</span>
+                                <span class="stat-value rank-platinum">Platinum I</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">LP</span>
+                                <span class="stat-value">1,324</span>
+                            </div>
+                            <div class="game-stat">
+                                <span class="stat-label">KDA</span>
+                                <span class="stat-value">2.4</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Matches & Activity -->
+            <div class="card recent-matches-card">
+                <div class="card-header">
+                    <h3 class="card-title">Recent Match History</h3>
+                    <button class="view-all-btn" onclick="viewAllMatches()">View All</button>
+                </div>
+                <div class="card-content">
+                    <div class="matches-list" id="matches-container">
+                        <!-- Matches will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar -->
+        <aside class="sidebar-right">
+            <!-- Live Leaderboard -->
+            <div class="card leaderboard-card">
+                <div class="card-header">
+                    <h3 class="card-title">Global Leaderboard</h3>
+                    <button class="refresh-btn" onclick="refreshLeaderboard()">🔄</button>
+                </div>
+                <div class="card-content">
+                    <div class="leaderboard-list" id="leaderboard-container">
+                        <!-- Leaderboard will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tournament Feed -->
+            <div class="card tournament-feed-card">
+                <div class="card-header">
+                    <h3 class="card-title">Tournament Feed</h3>
+                    <div class="live-indicator">🔴 LIVE</div>
+                </div>
+                <div class="card-content">
+                    <div class="tournament-list" id="tournament-container">
+                        <!-- Tournaments will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community News -->
+            <div class="card news-card">
+                <div class="card-header">
+                    <h3 class="card-title">Community News</h3>
+                </div>
+                <div class="card-content">
+                    <div class="news-list" id="news-container">
+                        <!-- News will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section">
+                <div class="footer-brand">
+                    <span class="logo">🎮</span>
+                    <span>GameHub</span>
+                </div>
+                <p class="footer-desc">Ultimate Gaming Community Hub</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Stats</h4>
+                <div class="footer-stats">
+                    <div class="footer-stat">
+                        <span class="stat-number" id="footer-players">2.4M</span>
+                        <span class="stat-label">Active Players</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="stat-number" id="footer-matches">856K</span>
+                        <span class="stat-label">Matches Today</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Server Status</h4>
+                <div class="server-status">
+                    <div class="server-item">
+                        <span class="server-name">NA East</span>
+                        <span class="server-ping good">12ms</span>
+                    </div>
+                    <div class="server-item">
+                        <span class="server-name">EU West</span>
+                        <span class="server-ping good">8ms</span>
+                    </div>
+                    <div class="server-item">
+                        <span class="server-name">Asia Pacific</span>
+                        <span class="server-ping warning">45ms</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-section">
+                <div class="social-links">
+                    <a href="#" class="social-link">Discord</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">YouTube</a>
+                </div>
+                <p class="copyright">© 2024 GameHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Notifications -->
+    <div class="notifications-panel" id="notifications-panel">
+        <div class="notification-item">
+            <div class="notification-icon">🏆</div>
+            <div class="notification-content">
+                <div class="notification-title">Achievement Unlocked!</div>
+                <div class="notification-text">Master Strategist - Win 5 ranked matches</div>
+            </div>
+            <button class="notification-close">×</button>
+        </div>
+        <div class="notification-item">
+            <div class="notification-icon">👥</div>
+            <div class="notification-content">
+                <div class="notification-title">Friend Request</div>
+                <div class="notification-text">ProGamer99 wants to be your friend</div>
+            </div>
+            <button class="notification-close">×</button>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading GameHub...</div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
