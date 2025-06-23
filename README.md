@@ -55,17 +55,6 @@ Gaming-Community-Hub
 - ✅ Vanilla JavaScript (for interactivity and DOM effects)
 - ❌ No frameworks or external libraries
 - ✅ 100% hand-coded
-
----
-
-## 📸 Screenshots
-
-### 🖼️ Landing Page  
-![Landing Page](assets/landing-preview.png)
-
-### 🖼️ Dashboard Page  
-![Dashboard Page](assets/dashboard-preview.png)
-
 ---
 
 ## 🚀 How to Run
@@ -80,10 +69,10 @@ git clone https://github.com/your-username/gaming-community-hub.git
 cd gaming-community-hub
 
 # Open Entry Page
-open entry.html
+open designverse/entry.html
 
 # Open landing page
-open landing-page/landingpage.html
+open designverse/landing-page/landingpage.html
 
 # Open dashboard page
-open dashboard/dashboard.html
+open designverse/dashboard/dashboard.html
